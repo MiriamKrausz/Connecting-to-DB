@@ -1,5 +1,7 @@
 ﻿
 using Bank.Core.Services;
+using Bank.Entities;
+using Bank.Service;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,7 +13,7 @@ namespace Bank.Controllers
     public class Bank_AccountController : ControllerBase
     {
         private readonly IBank_AccountService _bank_AccountService;
-        
+
         public Bank_AccountController(IBank_AccountService bank_AccountService)
         {
             _bank_AccountService = bank_AccountService;
@@ -29,10 +31,10 @@ namespace Bank.Controllers
         [HttpGet("{BankNumber}")]
         public IActionResult Get(int BankNumber)
         {
-            var Bank_Account=_bank_AccountService.GetByBankNumber (BankNumber);
-            if(Bank_Account is null)
+            var Bank_Account = _bank_AccountService.GetByBankNumber(BankNumber);
+            if (Bank_Account is null)
             {
-                return NotFound();  
+                return NotFound();
             }
             return Ok(Bank_Account);
         }
@@ -69,13 +71,22 @@ namespace Bank.Controllers
         //        b_a.OwnersName = account_for_update.OwnersName;
         //    }
         //}
-
+        [HttpPost]
+        public ActionResult Post([FromBody] Bank_Account bank_Account)
+        {
+            return Ok(_bank_AccountService.AddBank_Account(bank_Account));
+        }
+        [HttpPut("{accountNumber}")]
+        public ActionResult Put(int accountNumber, [FromBody] Bank_Account bank_Account)
+        {
+            return Ok(_bank_AccountService.UpdateBank_Account(accountNumber, bank_Account));
+        }
         //// DELETE api/<Accounts>/5
-        //[HttpDelete("{accountNumber}")]
-        //public void Delete(int accountNumber)
-        //{
-        //    Bank_Account b_a = _dataContext_Accounts.Find(e => e.AccountNumber == accountNumber);
-        //    _dataContext_Accounts.Remove(b_a);
-        //}
+        [HttpDelete("{accountNumber}")]
+        public ActionResult Delete(int accountNumber)
+        {
+            _bank_AccountService.DeleteBank_Account(accountNumber);
+            return NoContent();
+        }
     }
 }

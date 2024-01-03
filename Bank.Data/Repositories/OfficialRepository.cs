@@ -23,24 +23,27 @@ namespace Bank.Data.Repositories
         }
         public Official GetOfficialById(int id)
         {
-            return _context.OfficialList.ToList().Find(x => x.Id == id);
+            return _context.OfficialList.Find(id);
         }
         public Official AddOfficial(Official official)
         {
             _context.OfficialList.Add(official);
+            _context.SaveChanges();
             return official;
         }
         public Official UpdateOfficial(int id, Official official)
         {
-            var updatedOfficial = _context.OfficialList.ToList().Find(x => x.Id == id);
-            if (updatedOfficial == null)
-                return null;
+            var updatedOfficial = _context.OfficialList.Find(id);
+            //if (updatedOfficial == null)
+            //    return null;
             updatedOfficial = official;
+            _context.SaveChanges();
             return updatedOfficial;
         }
         public void DeleteOfficial(int id)
         {
-            _context.OfficialList.Remove(_context.OfficialList.ToList().Find(x => x.Id == id));
+            _context.OfficialList.Remove(_context.OfficialList.Find(id));
+            _context.SaveChanges();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Bank.Entities;
 using Bank.Core.Services;
+using Bank.Service;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Bank.Controllers
@@ -21,12 +22,19 @@ namespace Bank.Controllers
             return Ok(_officialService.GetOfficials());
         }
 
+
         // GET api/<Officials>/5
         //[HttpGet("{branch}")]
         //public IEnumerable<Official> Get(int branch)
         //{
         //    return _dataContext_Official.Where(e => e.BranchNumber == branch).ToList();
         //}
+
+        [HttpPost]
+        public ActionResult Post([FromBody] Official official)
+        {
+            return Ok(_officialService.AddOfficial(official));
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
@@ -46,7 +54,7 @@ namespace Bank.Controllers
         //}
 
         //// PUT api/<Customers>/5
-        //[HttpPut("{id}")]
+
         //public void Put(int id, [FromBody] Official off)
         //{
         //    Official updatedOfficial = _dataContext_Official.Find(e => e.Id == id);
@@ -57,14 +65,19 @@ namespace Bank.Controllers
         //    updatedOfficial.Addreess =off.Addreess;
         //    updatedOfficial.Age =off.Age;
         //}
+        [HttpPut("{id}")]
+        public ActionResult Put(int id, [FromBody] Official off)
+        {
+            return Ok(_officialService.UpdateOfficial(id, off));
+        }
 
         //// DELETE api/<Customers>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //    Official off = _dataContext_Official.Find(e => e.Id == id);
-        //    _dataContext_Official.Remove(off);
-        //}
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            _officialService.DeleteOfficial(id);
+            return NoContent();
+        }
     }
 
 }

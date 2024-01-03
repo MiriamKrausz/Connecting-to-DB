@@ -23,24 +23,26 @@ namespace Bank.Data.Repositories
         }
         public Bank_Account GetByBankNumber(int BankNumber)
         {
-            return _context.Bank_AccountList.ToList().Find(x => x.BankNumber == BankNumber);
+            return _context.Bank_AccountList.Find(BankNumber);
         }
         public Bank_Account AddBank_Account(Bank_Account bank_account)
         {
             _context.Bank_AccountList.Add(bank_account);
+            _context.SaveChanges();
             return bank_account;
         }
         public Bank_Account UpdateBank_Account(int BankNumber, Bank_Account bank_account)
         {
-            var updatedBank_Account= _context.Bank_AccountList.ToList().Find(x => x.BankNumber == BankNumber);
-            if (updatedBank_Account == null)
-                return null;
+            var updatedBank_Account= _context.Bank_AccountList.Find(BankNumber);
+            //if (updatedBank_Account == null)
+            //    return null;
             updatedBank_Account=bank_account;
+            _context.SaveChanges();
             return updatedBank_Account;
         }
         public void DeleteBank_Account(int BankNumber)
         {
-            _context.Bank_AccountList.Remove(_context.Bank_AccountList.ToList().Find(x => x.BankNumber == BankNumber));
+            _context.Bank_AccountList.Remove(_context.Bank_AccountList.Find(BankNumber));
         }
     }
 }

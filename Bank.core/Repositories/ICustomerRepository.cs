@@ -16,5 +16,8 @@ namespace Bank.Core.Repositories
         Customer AddCustomer(Customer customer);
         Customer UpdateCustomer(int id, Customer customer);
         void DeleteCustomer(int id);
+
+
+
     }
 }

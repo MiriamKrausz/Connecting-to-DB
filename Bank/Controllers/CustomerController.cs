@@ -21,7 +21,11 @@ namespace Bank.Controllers
         {
             return Ok(_customerService.GetCustomers());
         }
-
+        [HttpPost]
+        public ActionResult Post([FromBody] Customer customer )
+        {
+            return Ok(_customerService.AddCustomer(customer));
+        }
         // GET api/<Customers>/5
         //[HttpGet("{address}")]
         //public IEnumerable<Customer> Get(string address)
@@ -66,5 +70,18 @@ namespace Bank.Controllers
         //    Customer cust = _dataContext_Customers.Find(e => e.Id == id);
         //    _dataContext_Customers.Remove(cust);
         //}
+        [HttpPut("{id}")]
+        public ActionResult Put(int id, [FromBody]Customer customer)
+        {
+            return Ok(_customerService.UpdateCustomer(id, customer));
+        }
+
+        // DELETE api/<UsersController>/5
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            _customerService.DeleteCustomer(id);
+            return NoContent();
+        }
     }
 }
