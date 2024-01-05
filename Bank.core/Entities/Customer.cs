@@ -7,14 +7,16 @@
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
+        public int AppointmentId { get; set; }
+        public Appointment Appointment { get; set; }
 
-        public Customer(int id, int phoneNumber, string name, string address, string city)
-        {
-            Id = id;
-            PhoneNumber = phoneNumber;
-            Name = name;
-            Address = address;
-            City = city;
-        }
+        //public Customer(int id, int phoneNumber, string name, string address, string city)
+        //{
+        //    Id = id;
+        //    PhoneNumber = phoneNumber;
+        //    Name = name;
+        //    Address = address;
+        //    City = city;
+        //}
     }
 }

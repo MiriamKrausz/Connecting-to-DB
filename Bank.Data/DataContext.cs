@@ -11,6 +11,7 @@ namespace Bank.Data
 {
     public class DataContext:DbContext
     {
+        public DbSet<Appointment> AppointmentList { get; set; }
         public DbSet<Bank_Account> Bank_AccountList { get; set; }
         public DbSet<Customer> CustomerList { get; set; }
 

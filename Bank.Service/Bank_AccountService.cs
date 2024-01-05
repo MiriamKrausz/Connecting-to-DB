@@ -1,6 +1,15 @@
 ﻿//using Bank.Core.Repositories;
 //using Bank.Core.Services;
 //using Bank.Core.Entities;
+//using Bank.Core.Repositories;
+//using Bank.Core.Services;
+//using Bank.Entities;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+
 using Bank.Core.Repositories;
 using Bank.Core.Services;
 using Bank.Entities;
@@ -10,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bank.Service.Services
+namespace Bank.Service
 {
     public class Bank_AccountService : IBank_AccountService
     {
