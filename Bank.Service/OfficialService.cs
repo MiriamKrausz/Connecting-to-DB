@@ -16,7 +16,7 @@ namespace Bank.Service
         {
             _officialRepository = officialRepository;
         }
-        public List<Official> GetOfficials()
+        public IEnumerable<Official> GetOfficials()
         {
         return _officialRepository.GetOfficials();
          }

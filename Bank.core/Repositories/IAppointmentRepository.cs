@@ -9,7 +9,7 @@ namespace Bank.Core.Repositories
 {
     public interface IAppointmentRepository
     {
-        List<Appointment> GetAppointments();
+        IEnumerable<Appointment> GetAppointments();
 
         Appointment GetById(int id);
 

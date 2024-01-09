@@ -1,5 +1,6 @@
 ﻿using Bank.Core.Repositories;
 using Bank.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace Bank.Data.Repositories
         {
             _context = dataContext;
         }
-        public List<Customer> GetCustomers()
+        public IEnumerable<Customer> GetCustomers()
         {
-            return _context.CustomerList.ToList();
+            return _context.CustomerList.Include(u=>u.AppointmentId);
         }
         public  Customer GetById(int id)
 

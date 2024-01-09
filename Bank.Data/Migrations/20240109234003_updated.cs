@@ -4,7 +4,7 @@
 
 namespace Bank.Data.Migrations
 {
-    public partial class updatedBank : Migration
+    public partial class updated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

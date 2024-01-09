@@ -9,7 +9,7 @@ namespace Bank.Core.Services
 {
     public interface ICustomerService
     {
-        List<Customer> GetCustomers();
+        IEnumerable<Customer> GetCustomers();
 
         Customer GetById(int id);
 

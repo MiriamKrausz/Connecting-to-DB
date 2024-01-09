@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bank.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240105011040_updatedBank")]
-    partial class updatedBank
+    [Migration("20240109234003_updated")]
+    partial class updated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -138,7 +138,7 @@ namespace Bank.Data.Migrations
             modelBuilder.Entity("Bank.Entities.Customer", b =>
                 {
                     b.HasOne("Bank.Entities.Appointment", "Appointment")
-                        .WithMany()
+                        .WithMany("Customers")
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -149,12 +149,19 @@ namespace Bank.Data.Migrations
             modelBuilder.Entity("Bank.Entities.Official", b =>
                 {
                     b.HasOne("Bank.Entities.Appointment", "Appointment")
-                        .WithMany()
+                        .WithMany("Officials")
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Appointment");
+                });
+
+            modelBuilder.Entity("Bank.Entities.Appointment", b =>
+                {
+                    b.Navigation("Customers");
+
+                    b.Navigation("Officials");
                 });
 #pragma warning restore 612, 618
         }

@@ -25,7 +25,7 @@ namespace Bank.Service
         {
             _iAppointmentService = iAppointmentService;
         }
-        public List<Appointment> GetAppointments()
+        public IEnumerable<Appointment> GetAppointments()
         {
             return _iAppointmentService.GetAppointments();
         }

@@ -9,7 +9,7 @@ namespace Bank.Core.Repositories
 {
     public  interface IOfficialRepository
     {
-        List<Official>GetOfficials();
+        IEnumerable<Official>GetOfficials();
 
         Official GetOfficialById(int id);
         Official AddOfficial(Official official);

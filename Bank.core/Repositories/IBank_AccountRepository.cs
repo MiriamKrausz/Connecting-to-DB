@@ -9,7 +9,7 @@ namespace Bank.Core.Repositories
 {
     public interface IBank_AccountRepository
     {
-        List<Bank_Account> GetAccounts();
+        IEnumerable<Bank_Account> GetAccounts();
 
         Bank_Account GetByBankNumber(int BankNumber);
 

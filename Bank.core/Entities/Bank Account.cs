@@ -8,14 +8,14 @@
         public string OwnersName { get; set; }
         public int OwnersId { get; set; }
 
-        public Bank_Account(int bankNumber, int branchNumber, int id, string ownersName, int ownersId)
-        {
-            BankNumber = bankNumber;
-            BranchNumber = branchNumber;
-            Id = id;
-            OwnersName = ownersName;
-            OwnersId = ownersId;
-        }
+        //public Bank_Account(int bankNumber, int branchNumber, int id, string ownersName, int ownersId)
+        //{
+        //    BankNumber = bankNumber;
+        //    BranchNumber = branchNumber;
+        //    Id = id;
+        //    OwnersName = ownersName;
+        //    OwnersId = ownersId;
+        //}
 
        
     }

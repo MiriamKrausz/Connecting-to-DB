@@ -9,7 +9,7 @@ namespace Bank.Core.Services
 {
     public  interface IBank_AccountService
     {
-        List<Bank_Account> GetAccounts();
+        IEnumerable<Bank_Account> GetAccounts();
 
         Bank_Account GetByBankNumber(int BankNumber);
 

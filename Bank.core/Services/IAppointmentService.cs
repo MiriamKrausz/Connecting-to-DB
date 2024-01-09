@@ -16,7 +16,7 @@ namespace Bank.Core.Services
 {
     public interface IAppointmentService
     {
-        List<Appointment> GetAppointments();
+        IEnumerable<Appointment> GetAppointments();
 
         Appointment GetById(int id);
 

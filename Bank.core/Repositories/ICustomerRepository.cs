@@ -9,7 +9,7 @@ namespace Bank.Core.Repositories
 {
     public interface ICustomerRepository
     {
-        List<Customer> GetCustomers();
+        IEnumerable<Customer> GetCustomers();
 
         Customer GetById(int id);
 

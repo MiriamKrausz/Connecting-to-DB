@@ -16,7 +16,7 @@ namespace Bank.Service
         {
             _customerRepository = customerRepository;
         }
-        public List<Customer> GetCustomers()
+        public IEnumerable<Customer> GetCustomers()
         {
             return _customerRepository.GetCustomers();
         }

@@ -9,7 +9,7 @@ namespace Bank.Core.Services
 {
     public interface IOfficialService
     {
-        List<Official> GetOfficials();
+        IEnumerable<Official> GetOfficials();
 
         Official GetOfficialById(int id);
         Official AddOfficial(Official official);

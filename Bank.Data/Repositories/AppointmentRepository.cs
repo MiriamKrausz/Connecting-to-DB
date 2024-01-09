@@ -1,5 +1,6 @@
 ﻿using Bank.Core.Repositories;
 using Bank.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace Bank.Data.Repositories
         {
             _context = dataContext;
         }
-        public List<Appointment> GetAppointments()
+        public IEnumerable<Appointment> GetAppointments()
         {
-            return _context.AppointmentList.ToList();
+            return _context.AppointmentList.Include(u=>u.Customers).Include(u=>u.Officials);
         }
         public Appointment GetById(int id)
         {

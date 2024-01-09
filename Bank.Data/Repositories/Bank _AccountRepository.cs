@@ -17,7 +17,7 @@ namespace Bank.Data.Repositories
         {
             _context = dataContext;
         }
-        public List<Bank_Account> GetAccounts()
+        public IEnumerable<Bank_Account> GetAccounts()
         {
             return _context.Bank_AccountList.ToList();
         }

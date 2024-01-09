@@ -28,7 +28,7 @@ namespace Bank.Service
         {
             _bank_AccountRepository=bank_AccountRepository;
         }
-        public List<Bank_Account> GetAccounts()
+        public IEnumerable<Bank_Account> GetAccounts()
         {
             return _bank_AccountRepository.GetAccounts();
         }

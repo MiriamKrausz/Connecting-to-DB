@@ -136,7 +136,7 @@ namespace Bank.Data.Migrations
             modelBuilder.Entity("Bank.Entities.Customer", b =>
                 {
                     b.HasOne("Bank.Entities.Appointment", "Appointment")
-                        .WithMany()
+                        .WithMany("Customers")
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -147,12 +147,19 @@ namespace Bank.Data.Migrations
             modelBuilder.Entity("Bank.Entities.Official", b =>
                 {
                     b.HasOne("Bank.Entities.Appointment", "Appointment")
-                        .WithMany()
+                        .WithMany("Officials")
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Appointment");
+                });
+
+            modelBuilder.Entity("Bank.Entities.Appointment", b =>
+                {
+                    b.Navigation("Customers");
+
+                    b.Navigation("Officials");
                 });
 #pragma warning restore 612, 618
         }
